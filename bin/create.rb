@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+CREATE_HOME="#{ENV['HOME']}/lib/create"
 require 'erb'
 
 if ARGV.size < 1
@@ -26,7 +26,7 @@ end
 
 template_values.init
 
-template = IO.readlines(File.dirname(__FILE__) + "/../lib/templates/#{template_name}.erb").to_s
+template = IO.readlines("#{CREATE_HOME}/templates/#{template_name}.erb").to_s
 
 result = ERB.new(template)
 
