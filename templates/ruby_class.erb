@@ -1,0 +1,9 @@
+class <%=@name%>
+<%
+instance_variables = @variables ? @variables.split(',') : []
+if instance_variables.size > 0 %>
+  def initialize(<%= @variables %>)
+<% instance_variables.each { |var| %><%="    @#{var} = #{var}\n"%><%}%>
+  end
+<% end %>
+end
