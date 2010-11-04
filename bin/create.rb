@@ -26,8 +26,7 @@ end
 
 template_values.init
 
-template = IO.readlines("#{CREATE_HOME}/templates/#{template_name}.erb").to_s
+template = IO.readlines("#{CREATE_HOME}/templates/#{template_name}.erb").join
 
-result = ERB.new(template)
+result = ERB.new(template).run(template_values.get_binding)
 
-result.run(template_values.get_binding)
