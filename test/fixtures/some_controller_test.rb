@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SomeControllerTest < ActionController::TestCase
-   context "A SomeController" do
-   end
+class SomeControllerTestTest < ActionController::TestCase
+  context "A SomeControllerTest" do
+  end
 end

@@ -1,14 +1,19 @@
 require 'test/unit'
 
 class CreateTest < Test::Unit::TestCase
-   def test_create
-      create = File.join(File.dirname(__FILE__), '..', '..', 'bin', 'create.rb')
+  CREATE_ROOT =  File.join(File.dirname(__FILE__), '..', '..')
+  def test_create
 
-      assert_equal <<-CREATE, `#{create} unit_test name=Chicken`
-require 'test/unit'
+    assert_template('unit_test', 'some_unit_test')
+    assert_template('controller_test', 'some_controller_test')
+    assert_template('ruby_class', 'some_ruby')
+  end
 
-class ChickenTest < Test::Unit::TestCase
-end
-CREATE
-   end
+  private
+  def assert_template(test_type, template_name)
+    create = File.join(CREATE_ROOT, 'bin', 'create.rb')
+    template_file = File.join(CREATE_ROOT, 'test', 'fixtures', "#{template_name}.rb")
+    template_class_name = template_name.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+    assert_equal IO.readlines(template_file).join, `#{create} #{test_type} name=#{template_class_name}`
+  end
 end
