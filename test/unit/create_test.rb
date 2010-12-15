@@ -10,6 +10,7 @@ class CreateTest < Test::Unit::TestCase
     assert_template('ruby_class', 'some_ruby_with_variables', 'variables' => 'a,b,c')
     assert_template('active_support_test', 'some_rails_test', 'name' => 'SomeRails')
     assert_template('factory', 'some_factory', 'name' => 'some_factory')
+    assert_template('helper_test', 'some_helper_test', 'name' => 'SomeHelper')
   end
 
   private
