@@ -2,5 +2,3 @@ CREATE
 ====================
 
 Create is a simple tool I use to generate source files from templates.
-
-WARNING: It is not ready to be released, it is something that took 5 minutes to write, it is not unit tested, etc.
