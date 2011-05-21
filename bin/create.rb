@@ -13,9 +13,10 @@ ARGV.shift
 template_values = Object.new
 class << template_values
    def init
+     eval("@parameters = {}")
       ARGV.each do |arg|
          arg_array = arg.split('=')
-         eval("@#{arg_array[0]} = '#{arg_array[1]}'")
+         eval("@parameters[:#{arg_array[0]}] = '#{arg_array[1]}'")
       end
    end
 
