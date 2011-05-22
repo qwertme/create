@@ -25,6 +25,7 @@ class TemplateRunner
       puts "Missing mandatory parameter '#{name}'"
       exit 1
     end
+    @parameters[name]
   end
 end
 
