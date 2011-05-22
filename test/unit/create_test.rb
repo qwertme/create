@@ -11,6 +11,7 @@ class CreateTest < Test::Unit::TestCase
     assert_template('active_support_test', 'some_rails_test.rb', :name => 'SomeRails')
     assert_template('factory', 'some_factory.rb', :name => 'some_factory')
     assert_template('helper_test', 'some_helper_test.rb', :name => 'SomeHelper')
+    assert_template('scala_class', 'some_scala_class.scala', :name => 'SomeScalaClass', :package => 'test.fixtures')
   end
 
   private
