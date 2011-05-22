@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class <%=@parameters[:name]%>Test < ActionView::TestCase
-  context "A <%=@parameters[:name]%>" do
+class <%=mandatory :name %>Test < ActionView::TestCase
+  context "A <%=mandatory :name %>" do
     should "do something useful" do
 
     end
