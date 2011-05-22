@@ -1,8 +1,8 @@
-class <%=@parameters[:name]%>
+class <%=mandatory :name%>
 <%
-instance_variables = @parameters[:variables] ? @parameters[:variables].split(',') : []
-if instance_variables.size > 0 %>
-  def initialize(<%= @parameters[:variables] %>)
+  optional(:variables) do |variables|
+    instance_variables = variables.split(',') %>
+  def initialize(<%= variables %>)
 <% instance_variables.each { |var| %><%="    @#{var} = #{var}\n"%><%}%>
   end
 <% end %>

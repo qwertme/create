@@ -27,6 +27,10 @@ class TemplateRunner
     end
     @parameters[name]
   end
+
+  def optional(name, &block)
+    yield(@parameters[name]) if @parameters.has_key?(name)
+  end
 end
 
 template = IO.readlines("#{CREATE_HOME}/templates/#{template_name}.erb").join
