@@ -9,25 +9,22 @@ end
 
 template_name = ARGV.first
 ARGV.shift
-
-template_values = Object.new
-class << template_values
-   def init
-     eval("@parameters = {}")
-      ARGV.each do |arg|
-         arg_array = arg.split('=')
-         eval("@parameters[:#{arg_array[0]}] = '#{arg_array[1]}'")
-      end
-   end
-
-   def get_binding
-      binding
-   end
+parameters = {}
+ARGV.each do |arg|
+  arg_array = arg.split('=')
+  parameters[arg_array[0].to_sym] = arg_array[1]
 end
 
-template_values.init
+class TemplateRunner
+  def initialize(parameters)
+    @parameters = parameters
+  end
+end
 
 template = IO.readlines("#{CREATE_HOME}/templates/#{template_name}.erb").join
 
-result = ERB.new(template).run(template_values.get_binding)
+result = ERB.new(template)
+result.def_method(TemplateRunner, 'render')
 
+template_values = TemplateRunner.new(parameters)
+print template_values.render
