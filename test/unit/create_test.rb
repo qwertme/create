@@ -14,11 +14,20 @@ class CreateTest < Test::Unit::TestCase
     assert_template('scala_class', 'some_scala_class.scala', :name => 'SomeScalaClass', :package => 'test.fixtures')
   end
 
+  def test_missing_mandatory_parameter
+    assert_equal "Missing mandatory parameter 'package'\n", run_create('scala_class', :name => 'SomeClass')
+  end
+
   private
   def assert_template(template_name, fixture_name, options={})
-    create = File.join(CREATE_ROOT, 'bin', 'create.rb')
     template_file = File.join(CREATE_ROOT, 'test', 'fixtures', "#{fixture_name}")
 
-    assert_equal IO.readlines(template_file).join, `#{create} #{template_name} #{options.collect {|k,v| "#{k.to_s}=#{v}"}.join(' ')}`
+    assert_equal IO.readlines(template_file).join, run_create(template_name, options)
+  end
+
+  def run_create(template_name, options)
+    create = File.join(CREATE_ROOT, 'bin', 'create.rb')
+
+    `#{create} #{template_name} #{options.collect {|k,v| "#{k.to_s}=#{v}"}.join(' ')}`
   end
 end

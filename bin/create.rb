@@ -19,6 +19,13 @@ class TemplateRunner
   def initialize(parameters)
     @parameters = parameters
   end
+
+  def mandatory(name)
+    unless @parameters.has_key?(name)
+      puts "Missing mandatory parameter '#{name}'"
+      exit 1
+    end
+  end
 end
 
 template = IO.readlines("#{CREATE_HOME}/templates/#{template_name}.erb").join
