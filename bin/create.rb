@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-CREATE_HOME="#{ENV['HOME']}/lib/create" || ENV['CREATE_HOME']
+CREATE_HOME=ENV['CREATE_HOME'] || "#{ENV['HOME']}/lib/create"
 require 'erb'
 
 if ARGV.size < 1
