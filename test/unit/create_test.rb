@@ -12,6 +12,7 @@ class CreateTest < Test::Unit::TestCase
     assert_template('factory', 'some_factory.rb', :name => 'some_factory')
     assert_template('helper_test', 'some_helper_test.rb', :name => 'SomeHelper')
     assert_template('scala_class', 'some_scala_class.scala', :name => 'SomeScalaClass', :package => 'test.fixtures')
+    assert_template('view_test', 'some_view_test.rb', :name => 'SomeView')
   end
 
   def test_missing_mandatory_parameter
