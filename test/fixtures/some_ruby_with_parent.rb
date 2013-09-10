@@ -1,0 +1,3 @@
+class SomeRubyWithParent < Parent
+
+end

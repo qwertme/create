@@ -1,4 +1,4 @@
-class <%=mandatory :name%>
+class <%=mandatory :name%><% optional(:parent) { |parent|%> < <%= parent %><% } %>
 <%
   optional(:variables) do |variables|
     instance_variables = variables.split(',') %>

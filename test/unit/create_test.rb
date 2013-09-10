@@ -7,6 +7,7 @@ class CreateTest < Test::Unit::TestCase
     assert_template('unit_test', 'some_unit_test.rb', :name => 'SomeUnitTest')
     assert_template('controller_test', 'some_controller_test.rb', :name => 'SomeControllerTest')
     assert_template('ruby_class', 'some_ruby.rb', :name => 'SomeRuby')
+    assert_template('ruby_class', 'some_ruby_with_parent.rb', :name => 'SomeRubyWithParent', :parent => 'Parent')
     assert_template('ruby_class', 'some_ruby_with_variables.rb', :name => 'SomeRubyWithVariables',:variables => 'a,b,c')
     assert_template('model_test', 'some_rails_test.rb', :name => 'SomeRails')
     assert_template('factory', 'some_factory.rb', :name => 'some_factory')
