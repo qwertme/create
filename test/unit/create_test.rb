@@ -5,6 +5,7 @@ class CreateTest < Test::Unit::TestCase
 
   def test_create
     assert_template('unit_test', 'some_unit_test.rb', :name => 'SomeUnitTest')
+    assert_template('spec', 'some_spec.rb', :subject => 'SomeTestSubject')
     assert_template('controller_test', 'some_controller_test.rb', :name => 'SomeControllerTest')
     assert_template('ruby_class', 'some_ruby.rb', :name => 'SomeRuby')
     assert_template('ruby_class', 'some_ruby_with_parent.rb', :name => 'SomeRubyWithParent', :parent => 'Parent')
