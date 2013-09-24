@@ -3,8 +3,15 @@ CREATE_HOME=ENV['CREATE_HOME'] || "#{ENV['HOME']}/lib/create"
 require 'erb'
 
 if ARGV.size < 1
-   puts 'Usage: create <template name> [var=value...]'
-   exit(1)
+  puts 'Usage: create <template name> [template_parameter=value...]'
+  puts ""
+  puts "Available templates:"
+  Dir.entries("#{CREATE_HOME}/templates").each do |template|
+    unless template.start_with? '.'
+      puts "      #{template.gsub(/.erb/,'')}"
+    end
+  end
+  exit(1)
 end
 
 template_name = ARGV.first
