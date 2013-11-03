@@ -17,7 +17,9 @@ class CreateTest < Test::Unit::TestCase
     assert_template('view_test', 'some_view_test.rb', :name => 'SomeView')
     assert_template('jasmine_test', 'some_jasmine_node_test.js', :name => 'SomeObject')
     assert_template('coffee_class', 'some_class.coffee', :name => 'SomeClass')
-    assert_template('coffee_spec', 'some_class_spec.coffee', :name => 'SomeClass')
+    assert_template('coffee_spec', 'some_class_spec.coffee', :subject => 'SomeClass')
+    assert_template('coffee_require_class', 'some_require_class.coffee', :name => 'SomeClass')
+    assert_template('coffee_require_spec', 'some_require_class_spec.coffee', :subject => 'SomeClass')
   end
 
   def test_missing_mandatory_parameter
